@@ -87,10 +87,16 @@ class Video extends Audio
         if ($format instanceOf VideoInterface) {
             $commands[] = '-b:v';
             $commands[] = $format->getKiloBitrate() . 'k';
+	    $commands[] = '-profile:v';
+            $commands[] = 'main';
+            $commands[] = '-s';
+            $commands[] = '720x480';
             $commands[] = '-refs';
-            $commands[] = '6';
-            $commands[] = '-coder';
             $commands[] = '1';
+            $commands[] = '-coder';
+            $commands[] = '0';
+            $commands[] = '-level';
+            $commands[] = '31';
             $commands[] = '-sc_threshold';
             $commands[] = '40';
             $commands[] = '-flags';
@@ -107,6 +113,8 @@ class Video extends Audio
             $commands[] = '4';
             $commands[] = '-trellis';
             $commands[] = '1';
+            $commands[] = '-movflags';
+            $commands[] = 'faststart';
         }
 
         if ($format instanceOf AudioInterface) {
